@@ -1,0 +1,1347 @@
+        @keyframes modalSlideIn {        @keyframes pulse {        /* Categories Section */<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cycle Studio LLP - Premium Bicycles & Accessories</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, #000000 0%, #333333 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo img {
+            height: 60px;
+            width: auto;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #FFD700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0;
+            position: relative;
+        }
+        
+        .nav-menu li {
+            position: relative;
+        }
+        
+        .nav-menu li a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            border-radius: 0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: block;
+        }
+        
+        .nav-menu li a:hover {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #000;
+            transform: translateY(-2px);
+        }
+        
+        .nav-menu li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .nav-menu li a:hover::before {
+            left: 100%;
+        }
+        
+        /* Dropdown Styles */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: linear-gradient(135deg, #000000 0%, #333333 100%);
+            min-width: 220px;
+            max-height: 400px;
+            overflow-y: auto;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            border-radius: 8px;
+            z-index: 1001;
+        }
+        
+        .nav-menu li:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown a {
+            padding: 0.7rem 1.2rem !important;
+            border-radius: 0 !important;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+        
+        .dropdown a:last-child {
+            border-bottom: none;
+            border-radius: 0 0 8px 8px !important;
+        }
+        
+        .dropdown a:first-child {
+            border-radius: 8px 8px 0 0 !important;
+        }
+        
+        .dropdown a:hover {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #000;
+            transform: translateX(5px);
+        }
+        
+        /* Custom scrollbar for dropdown */
+        .dropdown::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .dropdown::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+        }
+        
+        .dropdown::-webkit-scrollbar-thumb {
+            background: #FFD700;
+            border-radius: 3px;
+        }
+        
+        .dropdown::-webkit-scrollbar-thumb:hover {
+            background: #FFA500;
+        }
+        
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        .mobile-menu-toggle:hover {
+            color: #FFD700;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(45deg, rgba(0,0,0,0.7), rgba(51,51,51,0.7)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23333" width="1200" height="600"/><circle cx="200" cy="200" r="100" fill="%23FFD700" opacity="0.1"/><circle cx="800" cy="400" r="150" fill="%23FFD700" opacity="0.1"/><circle cx="1000" cy="150" r="80" fill="%23666" opacity="0.3"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #000;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+        }
+        
+        /* New Arrivals Section */
+        .new-arrivals {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+        }
+        
+        .arrivals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .arrival-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 3px solid transparent;
+            position: relative;
+        }
+        
+        .arrival-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            border-color: #FFD700;
+        }
+        
+        .arrival-image {
+            height: 200px;
+            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .placeholder-image {
+            transition: transform 0.3s ease;
+        }
+        
+        .arrival-card:hover .placeholder-image {
+            transform: scale(1.1);
+        }
+        
+        .new-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #000;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            animation: pulse 2s infinite;
+        }
+        
+        .arrival-info {
+            padding: 1.5rem;
+        }
+        
+        .arrival-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .arrival-info .brand {
+            color: #FFD700;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+        
+        .arrival-info .category {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .arrival-info .price {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .view-all-btn {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+            animation: modalSlideIn 0.3s ease-out;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+        
+        .close {
+            color: #666;
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .close:hover {
+            color: #FFD700;
+        }
+        
+        .modal h2 {
+            color: #333;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 2rem;
+        }
+        
+        .categories-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .category-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .category-item:hover {
+            border-color: #FFD700;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .category-item .icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-details {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .contact-details h3 {
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-details p {
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .contact-details a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+        
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
+        
+        .about-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: left;
+            line-height: 1.8;
+        }
+        
+        .about-content p {
+            color: #333;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .highlight-item {
+            background: linear-gradient(45deg, #f8f8f8, #ffffff);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border-left: 4px solid #FFD700;
+        }
+        
+        .highlight-item h4 {
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .highlight-item p {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .categories {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .category-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 3px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            border-color: #FFD700;
+        }
+        
+        .category-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #000;
+            transition: all 0.3s ease;
+        }
+        
+        .category-card:hover .category-icon {
+            transform: rotate(360deg) scale(1.1);
+        }
+        
+        .category-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .category-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #000000 0%, #333333 100%);
+            color: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 215, 0, 0.1);
+        }
+        
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #FFD700;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #000;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: #FFD700;
+        }
+        
+        .footer-section h3 {
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #999;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, #000000 0%, #333333 100%);
+                flex-direction: column;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .nav-menu li {
+                width: 100%;
+            }
+            
+            .nav-menu li a {
+                padding: 1rem;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            
+            .dropdown {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background: rgba(0,0,0,0.5);
+                margin-left: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjI0MCIgdmlld0JveD0iMCAwIDI0MCAyNDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxjaXJjbGUgY3g9IjEyMCIgY3k9IjEyMCIgcj0iMTE1IiBzdHJva2U9IiMzMzMzMzMiIHN0cm9rZS13aWR0aD0iMTAiIGZpbGw9Im5vbmUiLz4KPHN0ZWYgY3g9IjEyMCIgY3k9IjEyMCIgcj0iNSIgZmlsbD0iIzMzMzMzMyIvPgo8bGluZSB4MT0iMTIwIiB5MT0iMTIwIiB4Mj0iMTIwIiB5Mj0iMzUiIHN0cm9rZT0iIzMzMzMzMyIgc3Ryb2tlLXdpZHRoPSIzIi8+CjxsaW5lIHgxPSIxMjAiIHkxPSIxMjAiIHgyPSIxNzAiIHkyPSIxNjAiIHN0cm9rZT0iIzMzMzMzMyIgc3Ryb2tlLXdpZHRoPSIzIi8+CjxsaW5lIHgxPSIxMjAiIHkxPSIxMjAiIHgyPSI3MCIgeTI9IjE2MCIgc3Ryb2tlPSIjMzMzMzMzIiBzdHJva2Utd2lkdGg9IjMiLz4KPHJlY3QgeD0iNDAiIHk9IjgwIiB3aWR0aD0iMTYwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI0ZGRDcwMCIvPgo8dGV4dCB4PSIxMjAiIHk9IjExNSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzMzMzMzMyIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Q1lDTEU8L3RleHQ+Cjx0ZXh0IHg9IjEyMCIgeT0iMTQ1IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMzMzMzMzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5TVFVESU88L3RleHQ+Cjx0ZXh0IHg9IjEyMCIgeT0iMTcwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IiMzMzMzMzMiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkJJSyVTIElOIEJPWDwvdGV4dD4KPHN0YXIgY3g9IjkwIiBjeT0iMjAwIiByPSI1IiBmaWxsPSJ3aGl0ZSIvPgo8c3RhciBjeD0iMTEwIiBjeT0iMjAwIiByPSI1IiBmaWxsPSJ3aGl0ZSIvPgo8c3RhciBjeD0iMTMwIiBjeT0iMjAwIiByPSI1IiBmaWxsPSJ3aGl0ZSIvPgo8c3RhciBjeD0iMTUwIiBjeT0iMjAwIiByPSI1IiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4=" alt="Cycle Studio Logo">
+                <div class="logo-text">Cycle Studio</div>
+            </div>
+            <nav>
+                <button class="mobile-menu-toggle">☰</button>
+                <ul class="nav-menu">
+                    <li>
+                        <a href="#road">Road</a>
+                        <div class="dropdown">
+                            <a href="#road-racing">Racing Bikes</a>
+                            <a href="#road-endurance">Endurance Bikes</a>
+                            <a href="#road-gravel">Gravel Bikes</a>
+                            <a href="#road-touring">Touring Bikes</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#hybrid">Hybrid</a>
+                        <div class="dropdown">
+                            <a href="#hybrid-comfort">Comfort Bikes</a>
+                            <a href="#hybrid-fitness">Fitness Bikes</a>
+                            <a href="#hybrid-commuter">Commuter Bikes</a>
+                            <a href="#hybrid-urban">Urban Bikes</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#mtb">MTB</a>
+                        <div class="dropdown">
+                            <a href="#mtb-hardtail">Hardtail</a>
+                            <a href="#mtb-full-suspension">Full Suspension</a>
+                            <a href="#mtb-cross-country">Cross Country</a>
+                            <a href="#mtb-trail">Trail Bikes</a>
+                            <a href="#mtb-downhill">Downhill</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#kids">Kids</a>
+                        <div class="dropdown">
+                            <a href="#kids-balance">Balance Bikes</a>
+                            <a href="#kids-12inch">12" Bikes</a>
+                            <a href="#kids-16inch">16" Bikes</a>
+                            <a href="#kids-20inch">20" Bikes</a>
+                            <a href="#kids-24inch">24" Bikes</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#ebike">E-Bike</a>
+                        <div class="dropdown">
+                            <a href="#ebike-city">City E-Bikes</a>
+                            <a href="#ebike-mountain">E-Mountain Bikes</a>
+                            <a href="#ebike-road">E-Road Bikes</a>
+                            <a href="#ebike-cargo">Cargo E-Bikes</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#accessories">Accessories</a>
+                        <div class="dropdown">
+                            <a href="#acc-helmets">Helmets</a>
+                            <a href="#acc-lights">Lights</a>
+                            <a href="#acc-locks">Locks</a>
+                            <a href="#acc-bags">Bags & Panniers</a>
+                            <a href="#acc-bottles">Water Bottles</a>
+                            <a href="#acc-bottle-holders">Bottle Holders</a>
+                            <a href="#acc-car-racks">Car Racks</a>
+                            <a href="#acc-pumps">Pumps</a>
+                            <a href="#acc-apparel">Apparel</a>
+                            <a href="#acc-gloves">Gloves</a>
+                            <a href="#acc-saddle">Saddle</a>
+                            <a href="#acc-saddle-cover">Saddle Cover</a>
+                            <a href="#acc-grips">Grips</a>
+                            <a href="#acc-bar-tapes">Bar Tapes</a>
+                            <a href="#acc-computers">Bike Computers & Sensors</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#spares">Spares</a>
+                        <div class="dropdown">
+                            <a href="#spares-pedals">Pedals</a>
+                            <a href="#spares-tires">Tires & Tubes</a>
+                            <a href="#spares-chains">Chains</a>
+                            <a href="#spares-brakes">Brake Parts</a>
+                            <a href="#spares-gears">Gear Components</a>
+                            <a href="#spares-wheels">Wheels & Rims</a>
+                            <a href="#spares-tools">Tools</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#brands">Brands</a>
+                        <div class="dropdown">
+                            <a href="#brand-trek">Trek</a>
+                            <a href="#brand-giant">Giant</a>
+                            <a href="#brand-scott">Scott</a>
+                            <a href="#brand-cannondale">Cannondale</a>
+                            <a href="#brand-look">Look</a>
+                            <a href="#brand-avanti">Avanti</a>
+                            <a href="#brand-bergamont">Bergamont</a>
+                            <a href="#brand-firefox">Firefox</a>
+                            <a href="#brand-astra">Astra</a>
+                            <a href="#brand-bikeark">BikeArk</a>
+                            <a href="#brand-upgrade">Upgrade</a>
+                            <a href="#brand-hornback">Hornback</a>
+                            <a href="#brand-tata-stryker">Tata Stryker</a>
+                            <a href="#brand-raleigh">Raleigh</a>
+                            <a href="#brand-suncross">Suncross</a>
+                            <a href="#brand-emotorad">Emotorad</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#about">About Us</a>
+                        <div class="dropdown">
+                            <a href="#about-story">Our Story</a>
+                            <a href="#about-team">Our Team</a>
+                            <a href="#about-services">Services</a>
+                            <a href="#about-contact">Contact</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#events">Events</a>
+                        <div class="dropdown">
+                            <a href="#events-rides">Group Rides</a>
+                            <a href="#events-workshops">Workshops</a>
+                            <a href="#events-races">Races</a>
+                            <a href="#events-maintenance">Maintenance Classes</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to <span style="color: #FFD700;">Cycle Studio</span></h1>
+            <p>Your Premier Destination for Quality Bicycles in Madurai, Tamil Nadu<br>
+            📞 Sales: 7708303132 | Service: 9384111001</p>
+            <a href="#categories" class="cta-button">Explore Our Collection</a>
+        </div>
+    </section>
+
+    <!-- New Arrivals Section -->
+    <section class="new-arrivals">
+        <div class="container">
+            <h2 class="section-title">New Arrivals</h2>
+            <div class="arrivals-grid" id="newArrivalsGrid">
+                <div class="arrival-card">
+                    <div class="arrival-image">
+                        <div class="placeholder-image">🚴‍♂️</div>
+                        <div class="new-badge">NEW</div>
+                    </div>
+                    <div class="arrival-info">
+                        <h3>Trek Domane SL 7</h3>
+                        <p class="brand">Trek</p>
+                        <p class="category">Road Bike</p>
+                        <div class="price">₹2,85,000</div>
+                    </div>
+                </div>
+                
+                <div class="arrival-card">
+                    <div class="arrival-image">
+                        <div class="placeholder-image">🚵‍♂️</div>
+                        <div class="new-badge">NEW</div>
+                    </div>
+                    <div class="arrival-info">
+                        <h3>Giant Trance X 29</h3>
+                        <p class="brand">Giant</p>
+                        <p class="category">Mountain Bike</p>
+                        <div class="price">₹1,95,000</div>
+                    </div>
+                </div>
+                
+                <div class="arrival-card">
+                    <div class="arrival-image">
+                        <div class="placeholder-image">⚡</div>
+                        <div class="new-badge">NEW</div>
+                    </div>
+                    <div class="arrival-info">
+                        <h3>Emotorad EMX+</h3>
+                        <p class="brand">Emotorad</p>
+                        <p class="category">E-Bike</p>
+                        <div class="price">₹65,000</div>
+                    </div>
+                </div>
+                
+                <div class="arrival-card">
+                    <div class="arrival-image">
+                        <div class="placeholder-image">🚲</div>
+                        <div class="new-badge">NEW</div>
+                    </div>
+                    <div class="arrival-info">
+                        <h3>Scott Sub Cross 20</h3>
+                        <p class="brand">Scott</p>
+                        <p class="category">Hybrid Bike</p>
+                        <div class="price">₹45,000</div>
+                    </div>
+                </div>
+            </div>
+            <div class="view-all-btn">
+                <a href="#all-products" class="cta-button">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="categories">
+        <div class="container">
+            <h2 class="section-title">Our Bicycle Categories</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">🚵</div>
+                    <h3>Mountain Bikes</h3>
+                    <p>Conquer any terrain with our high-performance mountain bikes designed for adventure seekers and trail enthusiasts.</p>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">🚴</div>
+                    <h3>Road Bikes</h3>
+                    <p>Experience speed and efficiency with our lightweight road bikes perfect for racing and long-distance cycling.</p>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">🚲</div>
+                    <h3>Hybrid Bikes</h3>
+                    <p>Best of both worlds! Versatile hybrid bikes ideal for city commuting and recreational riding.</p>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">👶</div>
+                    <h3>Kids Bikes</h3>
+                    <p>Safe and fun bicycles designed specifically for children, fostering a love for cycling from an early age.</p>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">⚡</div>
+                    <h3>E-Bikes</h3>
+                    <p>Embrace the future with our electric bikes offering effortless riding and extended range capabilities.</p>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">🛠️</div>
+                    <h3>Equipment</h3>
+                    <p>Professional-grade cycling equipment including helmets, lights, locks, and maintenance tools.</p>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">🎯</div>
+                    <h3>Accessories</h3>
+                    <p>Complete your cycling experience with our wide range of accessories and performance upgrades.</p>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">📅</div>
+                    <h3>Events & Workshops</h3>
+                    <p>Join our cycling community through organized rides, maintenance workshops, and cycling events.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Why Choose Cycle Studio LLP?</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <h3>Expert Consultation</h3>
+                    <p>Our experienced team provides personalized advice to help you find the perfect bicycle for your needs and budget.</p>
+                </div>
+                
+                <div class="feature">
+                    <h3>Professional Service</h3>
+                    <p>Complete maintenance and repair services performed by certified technicians using the latest tools and techniques.</p>
+                </div>
+                
+                <div class="feature">
+                    <h3>Quality Guarantee</h3>
+                    <p>We stand behind every product we sell with comprehensive warranties and exceptional after-sales support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Cycle Studio</h3>
+                    <p>Your trusted partner in cycling excellence since our establishment. We're passionate about helping you find the perfect ride.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Useful Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="scrollToTop()">Home</a></li>
+                        <li><a href="#" onclick="scrollToCategories()">Categories</a></li>
+                        <li><a href="#" onclick="showContactDetails()">Contact Us</a></li>
+                        <li><a href="#" onclick="showAboutUs()">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Account</h3>
+                    <ul class="footer-links">
+                        <li><a href="#my-account">My Account</a></li>
+                        <li><a href="#orders">Orders</a></li>
+                        <li><a href="#login">Login</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Policies</h3>
+                    <ul class="footer-links">
+                        <li><a href="#privacy-policy">Privacy Policy</a></li>
+                        <li><a href="#terms-conditions">Terms & Conditions</a></li>
+                        <li><a href="#return-exchange">Return & Exchange Policy</a></li>
+                        <li><a href="#shipping-policy">Shipping Policy</a></li>
+                        <li><a href="#payment-policy">Payment Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Popular Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#dealer-store">Dealer Store</a></li>
+                        <li><a href="#shop">Shop</a></li>
+                        <li><a href="#online">Online</a></li>
+                        <li><a href="#brand-store">Brand Store</a></li>
+                        <li><a href="#site-map">Site Map</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Visit Our Store</h3>
+                    <p>📍 Cycle Studio<br>
+                    No.6, Kamarajar 2nd Street<br>
+                    Gokhale Road, Chinnachokkikulam<br>
+                    Madurai, Tamil Nadu</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>📞 Sales: <a href="tel:7708303132" style="color: #FFD700; text-decoration: none;">7708303132</a><br>
+                    🔧 Service: <a href="tel:9384111001" style="color: #FFD700; text-decoration: none;">9384111001</a><br>
+                    ✉️ Email: <a href="mailto:Cyclestudioindia@gmail.com" style="color: #FFD700; text-decoration: none;">Cyclestudioindia@gmail.com</a><br>
+                    🕒 <a href="#" onclick="showStoreHours()" style="color: #FFD700; text-decoration: none; cursor: pointer;">Open 7 days a week</a><br>
+                    💬 Expert consultation available</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cycle Studio. All rights reserved. | Premium Bicycles & Expert Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Categories Modal -->
+    <div id="categoriesModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('categoriesModal')">&times;</span>
+            <h2>Our Bicycle Categories</h2>
+            <div class="categories-list">
+                <div class="category-item" onclick="navigateToCategory('road')">
+                    <div class="icon">🚴</div>
+                    <h3>Road Bikes</h3>
+                    <p>Racing, Endurance, Gravel, Touring</p>
+                </div>
+                <div class="category-item" onclick="navigateToCategory('mtb')">
+                    <div class="icon">🚵</div>
+                    <h3>MTB</h3>
+                    <p>Hardtail, Full Suspension, Trail</p>
+                </div>
+                <div class="category-item" onclick="navigateToCategory('hybrid')">
+                    <div class="icon">🚲</div>
+                    <h3>Hybrid Bikes</h3>
+                    <p>Comfort, Fitness, Commuter</p>
+                </div>
+                <div class="category-item" onclick="navigateToCategory('kids')">
+                    <div class="icon">👶</div>
+                    <h3>Kids Bikes</h3>
+                    <p>Balance, 12", 16", 20", 24"</p>
+                </div>
+                <div class="category-item" onclick="navigateToCategory('ebike')">
+                    <div class="icon">⚡</div>
+                    <h3>E-Bikes</h3>
+                    <p>City, Mountain, Road, Cargo</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('contactModal')">&times;</span>
+            <h2>Contact Cycle Studio</h2>
+            <div class="contact-details">
+                <h3>🏪 Cycle Studio</h3>
+                <p><strong>📍 Address:</strong><br>
+                No.6, Kamarajar 2nd Street<br>
+                Gokhale Road, Chinnachokkikulam<br>
+                Madurai, Tamil Nadu</p>
+                
+                <p><strong>📞 Contact Numbers:</strong><br>
+                Sales: <a href="tel:7708303132">7708303132</a><br>
+                Service: <a href="tel:9384111001">9384111001</a></p>
+                
+                <p><strong>✉️ Email:</strong><br>
+                <a href="mailto:Cyclestudioindia@gmail.com">Cyclestudioindia@gmail.com</a></p>
+                
+                <p><strong>🕒 Store Hours:</strong><br>
+                <a href="#" onclick="showStoreHours()" style="color: #FFD700; text-decoration: none; cursor: pointer;">Open 7 days a week</a></p>
+                
+                <p><strong>💬 Services:</strong><br>
+                Expert consultation available<br>
+                Professional bike servicing<br>
+                Custom bike fitting</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Us Modal -->
+    <div id="aboutModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('aboutModal')">&times;</span>
+            <h2>About Cycle Studio</h2>
+            <div class="about-content">
+                <p>Established with a passion for promoting an active and eco-friendly lifestyle, Cycle Studio LLP is a premier destination for cycling enthusiasts in Madurai. Located at No. 6, Kamarajar 2nd Street, Gokhale Road, Chinna Chokikulam, we offer a comprehensive range of high-quality bicycles for all ages and skill levels, from kids' bikes to professional-grade road and mountain bikes.</p>
+                
+                <p>We are proud to be a preferred retailer for top brands like Trek and EMotorad, ensuring our customers have access to the latest and best in cycling technology. Our dedicated team provides expert advice and services, including sales of accessories and repairs, to help you find the perfect ride and keep it in top condition.</p>
+                
+                <p>At Cycle Studio LLP, we are more than just a shop—we are a community hub dedicated to fostering a love for cycling and a healthier, greener future.</p>
+                
+                <div class="about-highlights">
+                    <div class="highlight-item">
+                        <h4>🚴‍♂️ Premium Brands</h4>
+                        <p>Authorized dealer for Trek, EMotorad, and other leading cycling brands</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h4>🔧 Expert Services</h4>
+                        <p>Professional bike fitting, maintenance, and repair services</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h4>🌱 Eco-Friendly Mission</h4>
+                        <p>Promoting sustainable transportation and healthy lifestyle choices</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h4>👨‍👩‍👧‍👦 All Ages Welcome</h4>
+                        <p>Bicycles and accessories for kids, adults, and professional riders</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to show about us details
+        function showAboutUs() {
+            document.getElementById('aboutModal').style.display = 'block';
+        }
+
+        // Function to scroll to categories section
+        function scrollToCategories() {
+            document.getElementById('categoriesModal').style.display = 'block';
+        }
+        
+        // Function to show contact details
+        function showContactDetails() {
+            document.getElementById('contactModal').style.display = 'block';
+        }
+        
+        // Function to close modal
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+        
+        // Function to navigate to specific category
+        function navigateToCategory(category) {
+            closeModal('categoriesModal');
+            // Scroll to categories section
+            const categoriesSection = document.getElementById('categories');
+            if (categoriesSection) {
+                categoriesSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const categoriesModal = document.getElementById('categoriesModal');
+            const contactModal = document.getElementById('contactModal');
+            const aboutModal = document.getElementById('aboutModal');
+            
+            if (event.target === categoriesModal) {
+                categoriesModal.style.display = 'none';
+            }
+            if (event.target === contactModal) {
+                contactModal.style.display = 'none';
+            }
+            if (event.target === aboutModal) {
+                aboutModal.style.display = 'none';
+            }
+        }
+
+        // Function to scroll to top (homepage)
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Function to add new arrival (for admin use)
+        function addNewArrival(product) {
+            const grid = document.getElementById('newArrivalsGrid');
+            const card = document.createElement('div');
+            card.className = 'arrival-card';
+            card.innerHTML = `
+                <div class="arrival-image">
+                    <div class="placeholder-image">${product.icon || '🚴‍♂️'}</div>
+                    <div class="new-badge">NEW</div>
+                </div>
+                <div class="arrival-info">
+                    <h3>${product.name}</h3>
+                    <p class="brand">${product.brand}</p>
+                    <p class="category">${product.category}</p>
+                    <div class="price">₹${product.price}</div>
+                </div>
+            `;
+            
+            // Insert at the beginning to show latest first
+            grid.insertBefore(card, grid.firstChild);
+            
+            // Limit to 8 products max
+            if (grid.children.length > 8) {
+                grid.removeChild(grid.lastChild);
+            }
+            
+            // Add animation
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+                card.style.transition = 'all 0.6s ease';
+            }, 100);
+        }
+        
+        // Example usage (for demonstration):
+        // addNewArrival({
+        //     name: "New Product Name",
+        //     brand: "Brand Name", 
+        //     category: "Category",
+        //     price: "50,000",
+        //     icon: "🚴‍♂️"
+        // });
+
+        // Mobile menu toggle
+        const mobileToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(51,51,51,0.95) 100%)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #000000 0%, #333333 100%)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe category cards
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
